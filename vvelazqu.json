@@ -13,9 +13,16 @@
                 "name": "Parent Rule",
                 "children": [
                     {
-                        "name": "Child Rule 1",
+                        "name": "Caching",
                         "children": [],
-                        "behaviors": [],
+                        "behaviors": [
+                            {
+                                "name": "caching",
+                                "options": {
+                                    "behavior": "NO_STORE"
+                                }
+                            }
+                        ],
                         "criteria": [],
                         "criteriaMustSatisfy": "all",
                         "comments": ""
