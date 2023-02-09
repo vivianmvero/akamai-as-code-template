@@ -1,0 +1,15 @@
+{
+    "name": "Caching",
+    "children": [],
+    "behaviors": [
+        {
+            "name": "caching",
+            "options": {
+                "behavior": "NO_STORE"
+            }
+        }
+    ],
+    "criteria": [],
+    "criteriaMustSatisfy": "all",
+    "comments": ""
+}

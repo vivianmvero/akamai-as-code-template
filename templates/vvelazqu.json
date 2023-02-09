@@ -1,0 +1,44 @@
+{
+    "accountId": "act_YYYY",
+    "contractId": "ctr_YYYY",
+    "groupId": "grp_YYYY",
+    "ruleFormat": "latest",
+    "propertyId": "prp_YYYYX",
+    "propertyName": "property_name",
+    "propertyVersion": 1,
+    "rules": {
+        "name": "default",
+        "children": [
+                    "#include:caching.json",
+                    "#include:Routing.json",
+                    "#include:Remove_Vary_Header.json"
+
+                ],
+        "behaviors": [
+            {
+                "name": "origin",
+                "options": {
+                    "cacheKeyHostname": "REQUEST_HOST_HEADER",
+                    "compress": true,
+                    "enableTrueClientIp": true,
+                    "forwardHostHeader": "REQUEST_HOST_HEADER",
+                    "httpPort": 80,
+                    "httpsPort": 443,
+                    "originCertificate": "",
+                    "originSni": true,
+                    "originType": "CUSTOMER",
+                    "ports": "",
+                    "trueClientIpClientSetting": false,
+                    "trueClientIpHeader": "True-Client-IP",
+                    "verificationMode": "CUSTOM",
+                    "hostname": "default.vvelazqu.training.ranet.me"
+                }
+            }
+        ],
+        "options": {
+            "is_secure": true
+        },
+        "variables": [],
+        "comments": ""
+    }
+}

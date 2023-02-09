@@ -1,0 +1,13 @@
+{
+    "name": "Remove Vary Header",
+    "children": [],
+    "behaviors": [{
+        "name": "removeVary",
+        "options": {
+            "enabled": true
+        }
+    }],
+    "criteria": [],
+    "criteriaMustSatisfy": "all",
+    "comments": ""
+}

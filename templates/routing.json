@@ -1,0 +1,49 @@
+{
+    "name": "Routing",
+    "children": [
+        {
+            "name": "/origin1/",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "origin",
+                    "options": {
+                        "cacheKeyHostname": "REQUEST_HOST_HEADER",
+                        "compress": true,
+                        "enableTrueClientIp": true,
+                        "forwardHostHeader": "REQUEST_HOST_HEADER",
+                        "httpPort": 80,
+                        "httpsPort": 443,
+                        "originCertificate": "",
+                        "originSni": true,
+                        "originType": "CUSTOMER",
+                        "ports": "",
+                        "trueClientIpClientSetting": false,
+                        "trueClientIpHeader": "True-Client-IP",
+                        "verificationMode": "CUSTOM",
+                        "hostname": "flexgreen.labln.ranet.me"
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "path",
+                    "options": {
+                        "matchCaseSensitive": false,
+                        "matchOperator": "MATCHES_ONE_OF",
+                        "values": [
+                            "/origin1/*"
+                        ],
+                        "normalize": false
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": ""
+        }
+    ],
+    "behaviors": [],
+    "criteria": [],
+    "criteriaMustSatisfy": "all",
+    "comments": ""
+}
