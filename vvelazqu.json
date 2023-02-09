@@ -81,6 +81,27 @@
                         "criteria": [],
                         "criteriaMustSatisfy": "all",
                         "comments": ""
+                    },
+                    {
+                        "name": "Remove Vary Header",
+                        "children": [],
+                        "behaviors": [{
+                            "name": "removeVary",
+                            "options": {
+                                "enabled": true
+                            }
+                        }],
+                        "criteria": [],
+                        "criteriaMustSatisfy": "all",
+                        "comments": ""
+                    },
+                    {
+                        "name": "Child Rule 3",
+                        "children": [],
+                        "behaviors": [],
+                        "criteria": [],
+                        "criteriaMustSatisfy": "all",
+                        "comments": ""
                     }
                 ],
         "behaviors": [
