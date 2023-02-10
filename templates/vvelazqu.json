@@ -45,6 +45,13 @@
                 "description": "",
                 "hidden": false,
                 "sensitive": false
+            },
+            {
+                "name": "PMUSER_ORIGIN50_50",
+                "value": "flexgreen.labln.ranet.me",
+                "description": "",
+                "hidden": false,
+                "sensitive": false
             }
         ],
         "comments": ""
