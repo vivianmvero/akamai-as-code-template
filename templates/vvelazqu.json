@@ -38,7 +38,15 @@
         "options": {
             "is_secure": true
         },
-        "variables": [],
+        "variables": [
+            {
+                "name": "PMUSER_ORIGIN",
+                "value": "flexorigin.labln.ranet.me",
+                "description": "",
+                "hidden": false,
+                "sensitive": false
+            }
+        ],
         "comments": ""
     }
 }
