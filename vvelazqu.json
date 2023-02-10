@@ -192,28 +192,20 @@
                                     {
                                         "name": "origin",
                                         "options": {
-                                            "originType": "CUSTOMER",
-                                            "forwardHostHeader": "REQUEST_HOST_HEADER",
-                                            "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                                            "cacheKeyHostname": "REQUEST_HOST_HEADER",
                                             "compress": true,
                                             "enableTrueClientIp": true,
-                                            "trueClientIpHeader": "True-Client-IP",
-                                            "trueClientIpClientSetting": false,
-                                            "verificationMode": "CUSTOM",
-                                            "originSni": true,
+                                            "forwardHostHeader": "REQUEST_HOST_HEADER",
                                             "httpPort": 80,
                                             "httpsPort": 443,
-                                            "hostname": "{{user.PMUSER_ORIGIN}}",
                                             "originCertificate": "",
+                                            "originSni": true,
+                                            "originType": "CUSTOMER",
                                             "ports": "",
-                                            "customValidCnValues": [
-                                                "{{Origin Hostname}}",
-                                                "{{Forward Host Header}}"
-                                            ],
-                                            "originCertsToHonor": "STANDARD_CERTIFICATE_AUTHORITIES",
-                                            "standardCertificateAuthorities": [
-                                                "akamai-permissive"
-                                            ]
+                                            "trueClientIpClientSetting": false,
+                                            "trueClientIpHeader": "True-Client-IP",
+                                            "verificationMode": "CUSTOM",
+                                            "hostname": "{{user.PMUSER_ORIGIN}}"
                                         }
                                     }
                                 ],
