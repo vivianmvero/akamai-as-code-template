@@ -187,6 +187,88 @@
             ],
             "criteriaMustSatisfy": "all",
             "comments": ""
+        },
+        {
+            "name": "/randomcolor/",
+            "children": [
+                {
+                    "name": "Set random Blue",
+                    "children": [],
+                    "behaviors": [
+                        {
+                            "name": "setVariable",
+                            "options": {
+                                "valueSource": "EXPRESSION",
+                                "transform": "NONE",
+                                "variableName": "PMUSER_ORIGIN50_50",
+                                "variableValue": "flexblue.labln.ranet.me"
+                            }
+                        }
+                    ],
+                    "criteria": [
+                        {
+                            "name": "random",
+                            "options": {
+                                "bucket": 50
+                            }
+                        }
+                    ],
+                    "criteriaMustSatisfy": "all",
+                    "comments": ""
+                }
+            ],
+            "behaviors": [],
+            "criteria": [
+                {
+                    "name": "path",
+                    "options": {
+                        "matchCaseSensitive": false,
+                        "matchOperator": "MATCHES_ONE_OF",
+                        "values": [
+                            "/randomcolor/"
+                        ],
+                        "normalize": false
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": ""
+        },
+        {
+            "name": "Set target",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "origin",
+                    "options": {
+                        "originType": "CUSTOMER",
+                        "forwardHostHeader": "REQUEST_HOST_HEADER",
+                        "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                        "compress": true,
+                        "enableTrueClientIp": true,
+                        "trueClientIpHeader": "True-Client-IP",
+                        "trueClientIpClientSetting": false,
+                        "verificationMode": "CUSTOM",
+                        "originSni": true,
+                        "httpPort": 80,
+                        "httpsPort": 443,
+                        "hostname": "{{user.PMUSER_ORIGIN50_50}}",
+                        "originCertificate": "",
+                        "ports": "",
+                        "customValidCnValues": [
+                            "{{Origin Hostname}}",
+                            "{{Forward Host Header}}"
+                        ],
+                        "originCertsToHonor": "STANDARD_CERTIFICATE_AUTHORITIES",
+                        "standardCertificateAuthorities": [
+                            "akamai-permissive"
+                        ]
+                    }
+                }
+            ],
+            "criteria": [],
+            "criteriaMustSatisfy": "all",
+            "comments": ""
         }
     ],
     "behaviors": [],
