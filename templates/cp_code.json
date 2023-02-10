@@ -1,0 +1,24 @@
+{
+    "name": "CP Code",
+    "children": [],
+    "behaviors": [
+        {
+            "name": "cpCode",
+            "options": {
+                "value": {
+                    "id": 1430518,
+                    "description": "ion.devops-training.ranet.me",
+                    "products": [
+                        "Fresca"
+                    ],
+                    "createdDate": 1674671504000,
+                    "cpCodeLimits": null,
+                    "name": "ion.devops-training.ranet.me"
+                }
+            }
+        }
+    ],
+    "criteria": [],
+    "criteriaMustSatisfy": "all",
+    "comments": ""
+}
