@@ -1,0 +1,30 @@
+{
+    "name": "Caching",
+    "children": [],
+    "behaviors": [
+        {
+            "name": "denyAccess",
+            "options": {
+                "reason": "default-deny-reason",
+                "enabled": false
+            }
+        }
+    ],
+    "criteria": [
+        {
+            "name": "requestHeader",
+            "options": {
+                "matchOperator": "IS_NOT_ONE_OF",
+                "matchWildcardName": false,
+                "matchWildcardValue": false,
+                "matchCaseSensitiveValue": true,
+                "headerName": "x-uid",
+                "values": [
+                    "dnZlbGF6cXU="
+                ]
+            }
+        }
+    ],
+    "criteriaMustSatisfy": "all",
+    "comments": ""
+}
