@@ -10,20 +10,312 @@
         "name": "default",
         "children": [
             {
-                "name": "Parent Rule",
+                "name": "CP Code",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "cpCode",
+                        "options": {
+                            "value": {
+                                "id": 1430518,
+                                "description": "ion.devops-training.ranet.me",
+                                "products": [
+                                    "Fresca"
+                                ],
+                                "createdDate": 1674671504000,
+                                "cpCodeLimits": null,
+                                "name": "ion.devops-training.ranet.me"
+                            }
+                        }
+                    }
+                ],
+                "criteria": [],
+                "criteriaMustSatisfy": "all",
+                "comments": ""
+            },
+            {
+                "name": "Caching",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "caching",
+                        "options": {
+                            "behavior": "NO_STORE"
+                        }
+                    }
+                ],
+                "criteria": [],
+                "criteriaMustSatisfy": "all",
+                "comments": ""
+            },        
+            {
+                "name": "Routing",
                 "children": [
                     {
-                        "name": "Child Rule 1",
+                        "name": "/origin1/",
                         "children": [],
-                        "behaviors": [],
-                        "criteria": [],
+                        "behaviors": [
+                            {
+                                "name": "origin",
+                                "options": {
+                                    "cacheKeyHostname": "REQUEST_HOST_HEADER",
+                                    "compress": true,
+                                    "enableTrueClientIp": true,
+                                    "forwardHostHeader": "REQUEST_HOST_HEADER",
+                                    "httpPort": 80,
+                                    "httpsPort": 443,
+                                    "originCertificate": "",
+                                    "originSni": true,
+                                    "originType": "CUSTOMER",
+                                    "ports": "",
+                                    "trueClientIpClientSetting": false,
+                                    "trueClientIpHeader": "True-Client-IP",
+                                    "verificationMode": "CUSTOM",
+                                    "hostname": "flexgreen.labln.ranet.me"
+                                }
+                            }
+                        ],
+                        "criteria": [
+                            {
+                                "name": "path",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "MATCHES_ONE_OF",
+                                    "values": [
+                                        "/origin1/"
+                                    ],
+                                    "normalize": false
+                                }
+                            }
+                        ],
                         "criteriaMustSatisfy": "all",
                         "comments": ""
                     },
                     {
-                        "name": "Child Rule 2",
+                        "name": "/origin2/",
                         "children": [],
+                        "behaviors": [
+                            {
+                                "name": "origin",
+                                "options": {
+                                    "cacheKeyHostname": "REQUEST_HOST_HEADER",
+                                    "compress": true,
+                                    "enableTrueClientIp": true,
+                                    "forwardHostHeader": "REQUEST_HOST_HEADER",
+                                    "httpPort": 80,
+                                    "httpsPort": 443,
+                                    "originCertificate": "",
+                                    "originSni": true,
+                                    "originType": "CUSTOMER",
+                                    "ports": "",
+                                    "trueClientIpClientSetting": false,
+                                    "trueClientIpHeader": "True-Client-IP",
+                                    "verificationMode": "CUSTOM",
+                                    "hostname": "flexblue.labln.ranet.me"
+                                }
+                            }
+                        ],
+                        "criteria": [
+                            {
+                                "name": "path",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "MATCHES_ONE_OF",
+                                    "values": [
+                                        "/origin2/"
+                                    ],
+                                    "normalize": false
+                                }
+                            }
+                        ],
+                        "criteriaMustSatisfy": "all",
+                        "comments": ""
+                    },
+                    {
+                        "name": "/random/",
+                        "children": [],
+                        "behaviors": [
+                            {
+                                "name": "Set random Blue",
+                                "children": [],
+                                "behaviors": [
+                                    {
+                                        "name": "setVariable",
+                                        "options": {
+                                            "valueSource": "EXPRESSION",
+                                            "transform": "NONE",
+                                            "variableName": "PMUSER_ORIGIN",
+                                            "variableValue": "flexblue.labln.ranet.me"
+                                        }
+                                    }
+                                ],
+                                "criteria": [
+                                    {
+                                        "name": "random",
+                                        "options": {
+                                            "bucket": 33.3
+                                        }
+                                    }
+                                ],
+                                "criteriaMustSatisfy": "all",
+                                "comments": ""
+                            },
+                            {
+                                "name": "Set random Green",
+                                "children": [],
+                                "behaviors": [
+                                    {
+                                        "name": "setVariable",
+                                        "options": {
+                                            "valueSource": "EXPRESSION",
+                                            "transform": "NONE",
+                                            "variableName": "PMUSER_ORIGIN",
+                                            "variableValue": "flexgreen.labln.ranet.me"
+                                        }
+                                    }
+                                ],
+                                "criteria": [
+                                    {
+                                        "name": "random",
+                                        "options": {
+                                            "bucket": 33.3
+                                        }
+                                    }
+                                ],
+                                "criteriaMustSatisfy": "all",
+                                "comments": ""
+                            },
+                            {
+                                "name": "Set target",
+                                "children": [],
+                                "behaviors": [
+                                    {
+                                        "name": "origin",
+                                        "options": {
+                                            "originType": "CUSTOMER",
+                                            "forwardHostHeader": "REQUEST_HOST_HEADER",
+                                            "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                                            "compress": true,
+                                            "enableTrueClientIp": true,
+                                            "trueClientIpHeader": "True-Client-IP",
+                                            "trueClientIpClientSetting": false,
+                                            "verificationMode": "CUSTOM",
+                                            "originSni": true,
+                                            "httpPort": 80,
+                                            "httpsPort": 443,
+                                            "hostname": "{{user.PMUSER_ORIGIN}}",
+                                            "originCertificate": "",
+                                            "ports": "",
+                                            "customValidCnValues": [
+                                                "{{Origin Hostname}}",
+                                                "{{Forward Host Header}}"
+                                            ],
+                                            "originCertsToHonor": "STANDARD_CERTIFICATE_AUTHORITIES",
+                                            "standardCertificateAuthorities": [
+                                                "akamai-permissive"
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "criteria": [],
+                                "criteriaMustSatisfy": "all",
+                                "comments": ""
+                            }
+                        ],
+                        "criteria": [
+                            {
+                                "name": "path",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "MATCHES_ONE_OF",
+                                    "values": [
+                                        "/random/"
+                                    ],
+                                    "normalize": false
+                                }
+                            }
+                        ],
+                        "criteriaMustSatisfy": "all",
+                        "comments": ""
+                    },
+                    {
+                        "name": "/randomcolor/",
+                        "children": [
+                            {
+                                "name": "Set random Blue",
+                                "children": [],
+                                "behaviors": [
+                                    {
+                                        "name": "setVariable",
+                                        "options": {
+                                            "valueSource": "EXPRESSION",
+                                            "transform": "NONE",
+                                            "variableName": "PMUSER_ORIGIN50_50",
+                                            "variableValue": "flexblue.labln.ranet.me"
+                                        }
+                                    }
+                                ],
+                                "criteria": [
+                                    {
+                                        "name": "random",
+                                        "options": {
+                                            "bucket": 50
+                                        }
+                                    }
+                                ],
+                                "criteriaMustSatisfy": "all",
+                                "comments": ""
+                            }
+                        ],
                         "behaviors": [],
+                        "criteria": [
+                            {
+                                "name": "path",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "MATCHES_ONE_OF",
+                                    "values": [
+                                        "/randomcolor/"
+                                    ],
+                                    "normalize": false
+                                }
+                            }
+                        ],
+                        "criteriaMustSatisfy": "all",
+                        "comments": ""
+                    },
+                    {
+                        "name": "Set target",
+                        "children": [],
+                        "behaviors": [
+                            {
+                                "name": "origin",
+                                "options": {
+                                    "originType": "CUSTOMER",
+                                    "forwardHostHeader": "REQUEST_HOST_HEADER",
+                                    "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                                    "compress": true,
+                                    "enableTrueClientIp": true,
+                                    "trueClientIpHeader": "True-Client-IP",
+                                    "trueClientIpClientSetting": false,
+                                    "verificationMode": "CUSTOM",
+                                    "originSni": true,
+                                    "httpPort": 80,
+                                    "httpsPort": 443,
+                                    "hostname": "{{user.PMUSER_ORIGIN50_50}}",
+                                    "originCertificate": "",
+                                    "ports": "",
+                                    "customValidCnValues": [
+                                        "{{Origin Hostname}}",
+                                        "{{Forward Host Header}}"
+                                    ],
+                                    "originCertsToHonor": "STANDARD_CERTIFICATE_AUTHORITIES",
+                                    "standardCertificateAuthorities": [
+                                        "akamai-permissive"
+                                    ]
+                                }
+                            }
+                        ],
                         "criteria": [],
                         "criteriaMustSatisfy": "all",
                         "comments": ""
@@ -33,15 +325,159 @@
                 "criteria": [],
                 "criteriaMustSatisfy": "all",
                 "comments": ""
-            }
-        ],
-        "behaviors": [
+            },
+            {
+                "name": "Remove Vary Header",
+                "children": [],
+                "behaviors": [{
+                    "name": "removeVary",
+                    "options": {
+                        "enabled": true
+                    }
+                }],
+                "criteria": [],
+                "criteriaMustSatisfy": "all",
+                "comments": ""
+            },
+            {
+                "name": "Deny General Access",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "denyAccess",
+                        "options": {
+                            "reason": "default-deny-reason",
+                            "enabled": false
+                        }
+                    }
+                ],
+                "criteria": [
+                    {
+                        "name": "requestHeader",
+                        "options": {
+                            "matchOperator": "IS_NOT_ONE_OF",
+                            "matchWildcardName": false,
+                            "matchWildcardValue": false,
+                            "matchCaseSensitiveValue": true,
+                            "headerName": "x-uid",
+                            "values": [
+                                "dnZlbGF6cXU="
+                            ]
+                        }
+                    }
+                ],
+                "criteriaMustSatisfy": "all",
+                "comments": ""
+            },
+            {
+                "name": "Deny Staging Access",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "denyAccess",
+                        "options": {
+                            "reason": "default-deny-reason",
+                            "enabled": false
+                        }
+                    }
+                ],
+                "criteria": [
+                    {
+                        "name": "requestHeader",
+                        "options": {
+                            "matchOperator": "IS_NOT_ONE_OF",
+                            "matchWildcardName": false,
+                            "matchWildcardValue": false,
+                            "matchCaseSensitiveValue": true,
+                            "headerName": "x-stg-auth",
+                            "values": [
+                                "EC1ZDGCTYXV0AA"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "contentDeliveryNetwork",
+                        "options": {
+                            "matchOperator": "IS",
+                            "network": "STAGING"
+                        }
+                    }
             
+                ],
+                "criteriaMustSatisfy": "all",
+                "comments": ""
+            },
+            {
+                "name": "Akamaizer",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "advanced",
+                        "options": {
+                            "description": "Akamaizer",
+                            "xml": "<edgecomputing:processor> <value>akamaizer</value> <allow-akamaizer>on</allow-akamaizer> <status>on</status> </edgecomputing:processor> <edgecomputing:akamaizer> <tag-filter> <rule>#Request Information#Akamai Details - Headers Received:#</rule> <tags>h1</tags> <onmatch>stop</onmatch> <scope>block</scope> <type>include</type> </tag-filter> <tag-filter> <rule>#Field#Information / Field#</rule> <tags>th</tags> <onmatch>stop</onmatch> <scope>block</scope> <type>include</type> </tag-filter> <tag-filter> <rule>#Value#Information / Value#</rule> <tags>th</tags> <onmatch>stop</onmatch> <scope>block</scope> <type>include</type> </tag-filter> </edgecomputing:akamaizer>"
+                        },
+                        "uuid": "4ff7af67-89c7-493e-89a6-46289c1531ff"
+                    }
+                ],
+                "criteria": [
+                    {
+                        "name": "path",
+                        "options": {
+                            "matchCaseSensitive": false,
+                            "matchOperator": "MATCHES_ONE_OF",
+                            "values": [
+                                "/akamaizer/"
+                            ],
+                            "normalize": false
+                        }
+                    }
+                ],
+                "criteriaMustSatisfy": "all",
+                "comments": ""
+            }
+                    
+                ],
+        "behaviors": [
+            {
+                "name": "origin",
+                "options": {
+                    "cacheKeyHostname": "REQUEST_HOST_HEADER",
+                    "compress": true,
+                    "enableTrueClientIp": true,
+                    "forwardHostHeader": "REQUEST_HOST_HEADER",
+                    "httpPort": 80,
+                    "httpsPort": 443,
+                    "originCertificate": "",
+                    "originSni": true,
+                    "originType": "CUSTOMER",
+                    "ports": "",
+                    "trueClientIpClientSetting": false,
+                    "trueClientIpHeader": "True-Client-IP",
+                    "verificationMode": "CUSTOM",
+                    "hostname": "default.vvelazqu.training.ranet.me"
+                }
+            }
         ],
         "options": {
             "is_secure": true
         },
-        "variables": [],
+        "variables": [
+            {
+                "name": "PMUSER_ORIGIN",
+                "value": "flexorigin.labln.ranet.me",
+                "description": "",
+                "hidden": false,
+                "sensitive": false
+            },
+            {
+                "name": "PMUSER_ORIGIN50_50",
+                "value": "flexgreen.labln.ranet.me",
+                "description": "",
+                "hidden": false,
+                "sensitive": false
+            }
+        ],
         "comments": ""
     }
 }
