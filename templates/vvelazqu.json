@@ -1,18 +1,21 @@
 {
-    "accountId": "act_YYYY",
-    "contractId": "ctr_YYYY",
-    "groupId": "grp_YYYY",
+    "accountId": "1-6JHGX",
+    "contractId": "1-1NC95D",
+    "groupId": "229585",
     "ruleFormat": "latest",
     "propertyId": "prp_YYYYX",
-    "propertyName": "property_name",
+    "propertyName": "vvleazqu.training.ranet.me",
     "propertyVersion": 1,
     "rules": {
         "name": "default",
         "children": [
+                    "#include:cp_code.json",
                     "#include:caching.json",
-                    "#include:Routing.json",
-                    "#include:Remove_Vary_Header.json"
-
+                    "#include:routing.json",
+                    "#include:Remove_Vary_Header.json",
+                    "#include:deny_general_access.json",
+                    "#include:deny_staging_access.json",
+                    "#include:akamaizer.json"
                 ],
         "behaviors": [
             {
