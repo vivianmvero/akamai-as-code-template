@@ -1,0 +1,38 @@
+{
+    "name": "Deny Staging Access",
+    "children": [],
+    "behaviors": [
+        {
+            "name": "denyAccess",
+            "options": {
+                "reason": "default-deny-reason",
+                "enabled": false
+            }
+        }
+    ],
+    "criteria": [
+        {
+            "name": "requestHeader",
+            "options": {
+                "matchOperator": "IS_ONE_OF",
+                "matchWildcardName": false,
+                "matchWildcardValue": false,
+                "matchCaseSensitiveValue": true,
+                "headerName": "x-stg-auth",
+                "values": [
+                    "EC1ZDGCTYXV0AA"
+                ]
+            }
+        },
+        {
+            "name": "contentDeliveryNetwork",
+            "options": {
+                "matchOperator": "IS",
+                "network": "STAGING"
+            }
+        }
+
+    ],
+    "criteriaMustSatisfy": "all",
+    "comments": ""
+}
