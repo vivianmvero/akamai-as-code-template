@@ -32,7 +32,154 @@
                         "matchCaseSensitive": false,
                         "matchOperator": "MATCHES_ONE_OF",
                         "values": [
-                            "/origin1/*"
+                            "/origin1/"
+                        ],
+                        "normalize": false
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": ""
+        },
+        {
+            "name": "/origin2/",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "origin",
+                    "options": {
+                        "cacheKeyHostname": "REQUEST_HOST_HEADER",
+                        "compress": true,
+                        "enableTrueClientIp": true,
+                        "forwardHostHeader": "REQUEST_HOST_HEADER",
+                        "httpPort": 80,
+                        "httpsPort": 443,
+                        "originCertificate": "",
+                        "originSni": true,
+                        "originType": "CUSTOMER",
+                        "ports": "",
+                        "trueClientIpClientSetting": false,
+                        "trueClientIpHeader": "True-Client-IP",
+                        "verificationMode": "CUSTOM",
+                        "hostname": "flexblue.labln.ranet.me"
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "path",
+                    "options": {
+                        "matchCaseSensitive": false,
+                        "matchOperator": "MATCHES_ONE_OF",
+                        "values": [
+                            "/origin2/"
+                        ],
+                        "normalize": false
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": ""
+        },
+        {
+            "name": "/random/",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "Set random Blue",
+                    "children": [],
+                    "behaviors": [
+                        {
+                            "name": "setVariable",
+                            "options": {
+                                "valueSource": "EXPRESSION",
+                                "transform": "NONE",
+                                "variableName": "PMUSER_ORIGIN",
+                                "variableValue": "flexblue.labln.ranet.me"
+                            }
+                        }
+                    ],
+                    "criteria": [
+                        {
+                            "name": "random",
+                            "options": {
+                                "bucket": 33.3
+                            }
+                        }
+                    ],
+                    "criteriaMustSatisfy": "all",
+                    "comments": ""
+                },
+                {
+                    "name": "Set random Green",
+                    "children": [],
+                    "behaviors": [
+                        {
+                            "name": "setVariable",
+                            "options": {
+                                "valueSource": "EXPRESSION",
+                                "transform": "NONE",
+                                "variableName": "PMUSER_ORIGIN",
+                                "variableValue": "flexgreen.labln.ranet.me"
+                            }
+                        }
+                    ],
+                    "criteria": [
+                        {
+                            "name": "random",
+                            "options": {
+                                "bucket": 33.3
+                            }
+                        }
+                    ],
+                    "criteriaMustSatisfy": "all",
+                    "comments": ""
+                },
+                {
+                    "name": "Set target",
+                    "children": [],
+                    "behaviors": [
+                        {
+                            "name": "origin",
+                            "options": {
+                                "originType": "CUSTOMER",
+                                "forwardHostHeader": "REQUEST_HOST_HEADER",
+                                "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                                "compress": true,
+                                "enableTrueClientIp": true,
+                                "trueClientIpHeader": "True-Client-IP",
+                                "trueClientIpClientSetting": false,
+                                "verificationMode": "CUSTOM",
+                                "originSni": true,
+                                "httpPort": 80,
+                                "httpsPort": 443,
+                                "hostname": "{{user.PMUSER_ORIGIN}}",
+                                "originCertificate": "",
+                                "ports": "",
+                                "customValidCnValues": [
+                                    "{{Origin Hostname}}",
+                                    "{{Forward Host Header}}"
+                                ],
+                                "originCertsToHonor": "STANDARD_CERTIFICATE_AUTHORITIES",
+                                "standardCertificateAuthorities": [
+                                    "akamai-permissive"
+                                ]
+                            }
+                        }
+                    ],
+                    "criteria": [],
+                    "criteriaMustSatisfy": "all",
+                    "comments": ""
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "path",
+                    "options": {
+                        "matchCaseSensitive": false,
+                        "matchOperator": "MATCHES_ONE_OF",
+                        "values": [
+                            "/random/"
                         ],
                         "normalize": false
                     }
